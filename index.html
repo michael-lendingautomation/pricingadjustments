@@ -31,6 +31,14 @@
     <p id="result"></p>
 
     <script>
+        // Auto-fill loan number from URL path
+        (function () {
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            if (parts.length > 0) {
+                document.getElementById('loanNumber').value = parts[0];
+            }
+        })();
+        
         function submitDecision(decision) {
             const loanNumber = document.getElementById('loanNumber').value;
             const llpa = document.getElementById('llpa').value;
@@ -52,6 +60,7 @@
     </script>
 </body>
 </html>
+
 
 
 
