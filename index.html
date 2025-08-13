@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Page</title>
+    <meta charset="UTF-8" />
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        button { margin-top: 20px; margin-right: 10px; padding: 8px 16px; }
+    </style>
+</head>
+<body>
+    <h2>Loan Approval Form</h2>
+    <label>
+        LLPA:
+        <input type="number" id="llpa" step="0.01" placeholder="Enter LLPA" />
+    </label>
+    <label>
+        Rate:
+        <input type="number" id="rate" step="0.01" placeholder="Enter Rate" />
+    </label>
+    <div>
+        <button onclick="submitDecision('Approve')">Approve</button>
+        <button onclick="submitDecision('Deny')">Deny</button>
+    </div>
+
+    <p id="result"></p>
+
+    <script>
+        function submitDecision(decision) {
+            const llpa = document.getElementById('llpa').value;
+            const rate = document.getElementById('rate').value;
+            if (!llpa || !rate) {
+                alert("Please enter both LLPA and Rate.");
+                return;
+            }
+            document.getElementById('result').innerText =
+                `Decision: ${decision} (LLPA: ${llpa}, Rate: ${rate})`;
+
+            // If you want to POST to Azure Function:
+            // fetch("https://<your-function-url>", {
+            //   method: "POST",
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify({ llpa, rate, decision })
+            // });
+        }
+    </script>
+</body>
+</html>
