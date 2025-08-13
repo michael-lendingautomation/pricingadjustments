@@ -10,14 +10,18 @@
     </style>
 </head>
 <body>
-    <h2>Loan Approval Form</h2>
+    <h2>Pricing Exception Form</h2>
     <label>
         LLPA:
-        <input type="number" id="llpa" step="0.01" placeholder="Enter LLPA" />
+        <input type="string" id="loanNumber" placeholder="Enter Loan Number" />
+    </label>
+    <label>
+        LLPA:
+        <input type="number" id="llpa" step="0.125" placeholder="Enter LLPA" />
     </label>
     <label>
         Rate:
-        <input type="number" id="rate" step="0.01" placeholder="Enter Rate" />
+        <input type="number" id="rate" step="0.125" placeholder="Enter Rate" />
     </label>
     <div>
         <button onclick="submitDecision('Approve')">Approve</button>
@@ -28,14 +32,15 @@
 
     <script>
         function submitDecision(decision) {
+            const loanNumber = document.getElementById('loanNumber').value;
             const llpa = document.getElementById('llpa').value;
             const rate = document.getElementById('rate').value;
-            if (!llpa || !rate) {
-                alert("Please enter both LLPA and Rate.");
+            if (!llpa || !rate || !loanNumber) {
+                alert("Please enter Loan Number, LLPA and Rate.");
                 return;
             }
             document.getElementById('result').innerText =
-                `Decision: ${decision} (LLPA: ${llpa}, Rate: ${rate})`;
+                `Decision for Loan Number: ${decision} (LLPA: ${llpa}, Rate: ${rate}, Loan Number: ${loanNumber})`;
 
             // If you want to POST to Azure Function:
             // fetch("https://<your-function-url>", {
@@ -47,3 +52,4 @@
     </script>
 </body>
 </html>
+
