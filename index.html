@@ -40,7 +40,7 @@
                 return;
             }
             document.getElementById('result').innerText =
-                `Decision for Loan Number: ${decision} (LLPA: ${llpa}, Rate: ${rate}, Loan Number: ${loanNumber})`;
+                `Decision: ${decision} (LLPA: ${llpa}, Rate: ${rate}, Loan Number: ${loanNumber})`;
 
             // If you want to POST to Azure Function:
             // fetch("https://<your-function-url>", {
@@ -52,5 +52,6 @@
     </script>
 </body>
 </html>
+
 
 
